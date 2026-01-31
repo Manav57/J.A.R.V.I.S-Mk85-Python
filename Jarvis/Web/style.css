@@ -1,0 +1,274 @@
+/* --- RESET & FONTS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+body {
+    background-color: #00050a;
+    color: #00f3ff;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- UTILITY --- */
+.hidden { display: none !important; }
+
+/* --- NEW FEATURE: HOLOGRAPHIC MODAL --- */
+.hologram-modal {
+    position: absolute;
+    top: 10%;
+    left: 15%; /* Centered relative to the 70% width */
+    width: 70%;
+    height: 80%;
+    background: rgba(0, 15, 20, 0.9); /* Dark semi-transparent */
+    backdrop-filter: blur(8px); /* Blur effect behind the window */
+    border: 1px solid #00f3ff;
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.2), inset 0 0 20px rgba(0, 243, 255, 0.1);
+    z-index: 100; /* Sit on top of everything */
+    display: flex;
+    flex-direction: column;
+    animation: openHolo 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Pop-up animation */
+}
+
+@keyframes openHolo {
+    from { transform: scale(0.8) translateY(50px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.hologram-header {
+    background: rgba(0, 243, 255, 0.1);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #00f3ff;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.holo-btn {
+    background: transparent;
+    border: 1px solid #00f3ff;
+    color: #00f3ff;
+    padding: 5px 15px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.holo-btn:hover {
+    background: #00f3ff;
+    color: #000;
+    box-shadow: 0 0 15px #00f3ff;
+}
+
+.close-btn:hover {
+    background: #ff3333;
+    border-color: #ff3333;
+    box-shadow: 0 0 15px #ff3333;
+}
+
+.hologram-content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto; /* ENABLE SCROLLING */
+    font-family: 'Courier Prime', monospace; /* Coding font */
+    font-size: 1.1rem;
+    color: #e0ffff;
+    white-space: pre-wrap; /* Preserve code formatting */
+    line-height: 1.6;
+    text-shadow: 0 0 2px rgba(0, 243, 255, 0.5);
+}
+
+/* Custom Scrollbar */
+.hologram-content::-webkit-scrollbar { width: 10px; }
+.hologram-content::-webkit-scrollbar-track { background: #001111; }
+.hologram-content::-webkit-scrollbar-thumb { background: #00f3ff; border: 1px solid #000; }
+
+.hologram-footer {
+    padding: 5px 20px;
+    font-size: 0.7rem;
+    text-align: right;
+    border-top: 1px solid rgba(0, 243, 255, 0.3);
+    color: rgba(0, 243, 255, 0.5);
+}
+
+/* --- BACKGROUND FX (Unchanged) --- */
+.grid-bg {
+    position: absolute;
+    width: 200%; height: 200%;
+    background:
+        linear-gradient(rgba(0, 243, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 243, 255, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
+    animation: gridMove 20s linear infinite;
+    z-index: -5;
+    opacity: 0.4;
+}
+
+.scan-line {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 5px;
+    background: rgba(0, 243, 255, 0.5);
+    box-shadow: 0 0 10px #00f3ff;
+    animation: scan 4s linear infinite;
+    z-index: 10;
+    opacity: 0.3;
+}
+
+.corner {
+    position: absolute;
+    width: 50px; height: 50px;
+    border: 3px solid #00f3ff;
+    box-shadow: 0 0 10px #00f3ff;
+}
+.top-left { top: 20px; left: 20px; border-right: none; border-bottom: none; }
+.top-right { top: 20px; right: 20px; border-left: none; border-bottom: none; }
+.bottom-left { bottom: 20px; left: 20px; border-right: none; border-top: none; }
+.bottom-right { bottom: 20px; right: 20px; border-left: none; border-top: none; }
+
+/* --- LAYOUT (Unchanged) --- */
+.interface {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 80%;
+    z-index: 2;
+}
+
+.panel {
+    width: 25%; height: 100%;
+    display: flex; flex-direction: column; gap: 20px;
+}
+
+.header h3 {
+    border-bottom: 2px solid #00f3ff;
+    padding-bottom: 5px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px #00f3ff;
+}
+
+/* --- CENTER ARC REACTOR (Unchanged) --- */
+.center-core {
+    position: relative;
+    width: 400px; height: 400px;
+    display: flex; justify-content: center; align-items: center;
+}
+
+/* Shared Circle Styles */
+.center-core div[class^="circle-"] {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+}
+
+.circle-outer {
+    width: 380px; height: 380px;
+    border-top: 2px solid #00f3ff;
+    border-bottom: 2px solid #00f3ff;
+    animation: spinClockwise 10s linear infinite;
+}
+
+.circle-outer-2 {
+    width: 340px; height: 340px;
+    border-left: 4px solid #00f3ff;
+    border-right: 4px solid #00f3ff;
+    animation: spinCounter 7s linear infinite;
+    opacity: 0.7;
+}
+
+.circle-middle {
+    width: 250px; height: 250px;
+    border: 2px dashed #00f3ff;
+    animation: spinClockwise 15s linear infinite;
+}
+
+.circle-inner {
+    width: 150px; height: 150px;
+    border-top: 5px solid #fff;
+    border-bottom: 5px solid #fff;
+    animation: spinCounter 2s linear infinite;
+}
+
+.circle-center {
+    width: 50px; height: 50px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 50px #00f3ff, 0 0 80px #00f3ff;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.core-text {
+    position: absolute; text-align: center; top: 110%;
+    text-shadow: 0 0 10px #00f3ff;
+}
+
+/* --- WIDGETS (Unchanged) --- */
+.terminal-window {
+    height: 300px; overflow: hidden;
+    font-family: monospace; font-size: 0.9rem;
+    color: rgba(0, 243, 255, 0.8);
+    border-left: 1px solid rgba(0,243,255,0.3);
+    padding-left: 10px;
+}
+
+.data-stream {
+    font-family: monospace; font-size: 0.7rem;
+    color: rgba(0, 243, 255, 0.4);
+    height: 100px; overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.bar-container {
+    width: 100%; height: 8px; background: #002222;
+    border: 1px solid #005555; margin-top: 5px;
+}
+.bar { height: 100%; background: #00f3ff; box-shadow: 0 0 10px #00f3ff; width: 0%; transition: width 0.5s; }
+
+.radar-box {
+    width: 100px; height: 100px;
+    border: 1px solid #00f3ff;
+    border-radius: 50%;
+    position: relative;
+    margin: 20px auto;
+    background: radial-gradient(circle, transparent 20%, rgba(0, 243, 255, 0.1) 80%);
+}
+.radar-sweep {
+    width: 50%; height: 50%;
+    background: linear-gradient(to right, transparent, rgba(0, 243, 255, 0.8));
+    position: absolute; top: 0; left: 0;
+    transform-origin: bottom right;
+    animation: spinClockwise 2s linear infinite;
+    border-radius: 100% 0 0 0;
+}
+
+/* --- VISUALIZER (Unchanged) --- */
+.audio-visualizer {
+    position: absolute; bottom: 20px;
+    display: flex; gap: 5px; height: 50px; align-items: flex-end;
+}
+.audio-visualizer .bar {
+    width: 10px; background: #00f3ff;
+    animation: audioBounce 0.5s infinite alternate;
+}
+.audio-visualizer .bar:nth-child(even) { animation-duration: 0.7s; }
+.audio-visualizer .bar:nth-child(3n) { animation-duration: 0.4s; }
+
+/* --- KEYFRAMES --- */
+@keyframes spinClockwise { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes spinCounter { 0% { transform: rotate(0deg); } 100% { transform: rotate(-360deg); } }
+@keyframes scan { 0% { top: 0%; opacity: 0; } 50% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
+@keyframes pulse { 0% { opacity: 0.6; transform: scale(0.9); } 100% { opacity: 1; transform: scale(1.1); } }
+@keyframes audioBounce { 0% { height: 10%; } 100% { height: 100%; } }
+@keyframes gridMove { 0% { transform: perspective(500px) rotateX(60deg) translateY(0); } 100% { transform: perspective(500px) rotateX(60deg) translateY(50px); } }

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J.A.R.V.I.S. | PROCESSSING</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Courier+Prime&display=swap" rel="stylesheet">
+</head>
+
+<body onload="eel.python_signal_ready()">
+
+    <div class="scan-line"></div>
+    <div class="glitch-overlay"></div>
+    <div class="grid-bg"></div>
+
+    <div class="corner top-left"></div>
+    <div class="corner top-right"></div>
+    <div class="corner bottom-left"></div>
+    <div class="corner bottom-right"></div>
+
+    <div id="hologram-modal" class="hologram-modal hidden">
+        <div class="hologram-header">
+            <span>SECURE_DATA_STREAM //</span>
+            <div class="hologram-controls">
+                <button class="holo-btn" onclick="copyText()">[ COPY ]</button>
+                <button class="holo-btn close-btn" onclick="closeModal()">[ X ]</button>
+            </div>
+        </div>
+        <div class="hologram-content" id="hologram-text">
+            </div>
+        <div class="hologram-footer">
+            <span>STARK_INDUSTRIES_SERVER_V.2.0</span>
+        </div>
+    </div>
+
+    <div class="interface">
+
+        <div class="panel left-panel">
+            <div class="header"><h3>SYSTEM_LOG //</h3></div>
+            <div class="data-stream" id="data-stream-left"></div>
+            <div class="terminal-window" id="terminal-log">
+                <p class="log-entry">> INITIALIZING MK-85 PROTOCOLS...</p>
+                <p class="log-entry">> CONNECTING TO SATELLITE...</p>
+            </div>
+        </div>
+
+        <div class="center-core">
+            <div class="circle-outer"></div>
+            <div class="circle-outer-2"></div>
+            <div class="circle-middle"></div>
+            <div class="circle-inner"></div>
+            <div class="circle-center"></div>
+
+            <div class="core-text">
+                <h1 id="status-text">ONLINE</h1>
+                <p>Manav Industry</p>
+            </div>
+        </div>
+
+        <div class="panel right-panel">
+            <div class="header"><h3>HARDWARE //</h3></div>
+
+            <div class="stat-box">
+                <div class="stat-label"><span>CPU CORE</span> <span id="cpu-num">34%</span></div>
+                <div class="bar-container"><div class="bar" id="cpu-bar"></div></div>
+            </div>
+
+            <div class="stat-box">
+                <div class="stat-label"><span>THERMAL</span> <span id="temp-num">42°C</span></div>
+                <div class="bar-container"><div class="bar" id="temp-bar"></div></div>
+            </div>
+
+            <div class="radar-box">
+                <div class="radar-sweep"></div>
+            </div>
+
+            <div class="time-box">
+                <h2 id="clock">00:00:00</h2>
+                <p>LOCAL_TIME</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="audio-visualizer">
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+    </div>
+
+    <script type="text/javascript" src="/eel.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
