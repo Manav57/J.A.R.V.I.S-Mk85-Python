@@ -13,7 +13,7 @@ import google.generativeai as genai
 
 # --- 1. CONFIGURATION ---
 # PASTE YOUR API KEY HERE
-GOOGLE_API_KEY = "AIzaSyCKsA4Vdp7lLEhZ9HtU6jq8NTrIEFU26GM"
+GOOGLE_API_KEY = "PASTE_YOUR_API_KEY_HERE"
 
 # --- 2. SETUP ---
 if not os.path.exists("index.html"):
@@ -279,6 +279,7 @@ def jarvis_loop():
 @eel.expose
 def python_signal_ready():
     threading.Thread(target=jarvis_loop, daemon=True).start()
+
 
 
 eel.start('index.html', size=(1280, 800))
